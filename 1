@@ -1,0 +1,42 @@
+def polaular(angka):
+  if angka <= 0:
+    print("tidak terdefiniskan")
+    return
+
+  num = 1
+  for i in range(angka):
+    row = []
+    for j in range(angka):
+      row.append(f"{num:02}")
+      num += 1
+    if i % 2 == 1:
+      row.reverse()
+    print(" ".join(row))
+
+# Contoh penggunaan
+polaular(4)
+polaular(0)
+==============================================
+def capitalh(baris, kolom):
+  if baris < 3 or kolom < 3 or baris % 2 == 0:
+    print("dimensi tidak sesuai")
+    return
+
+  for i in range(baris):
+    if i == baris // 2:
+      print('#' * kolom)
+    else:
+      print('#' + ' ' * (kolom - 2) + '#')
+
+# Contoh penggunaan
+capitalh(7, 5)
+======================================================
+
+angka = [1, 2, 3, 5, 6, 7, 8, 9]
+angka_reverse = reversed(angka) # 1
+# angka.sort(reverse=True) # 2
+angka_reverse3 = angka[::-1]
+for i in angka_reverse3:
+  print(i, end=" ")
+
+===================================================
