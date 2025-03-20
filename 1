@@ -40,3 +40,94 @@ for i in angka_reverse3:
   print(i, end=" ")
 
 ===================================================
+
+def ularAngka(bawah, samping):
+  num = 1
+  for i in range(bawah):
+    row = []
+    if i % 2 == 0:
+      for j in range(samping):
+        row.append(num)
+        num += 1
+    else:
+      for j in range(samping):
+        row.insert(0, num)
+        num += 1
+    if i == 0:
+      row[0] = "head"
+    if i == bawah - 1:
+      if bawah % 2 == 0:
+        row[-samping] = "tail"
+      else:
+        row[-1] = "tail"
+    print(" ".join(f"{n:02d}" if isinstance(n, int) else f"{n:>4}" for n in row))
+
+# Contoh penggunaan
+ularAngka(5, 4)
+=============================================================================================
+
+def petakBomNikTe(baris, kolom, angkaBom, kataBom):
+    for i in range(1, baris * kolom + 1):
+        if i % kolom == 0 and i != 1:
+            print("")
+        if i % angkaBom == 0 or i // 10 == angkaBom or i % 10 == angkaBom:
+            print(kataBom, end=" - ")
+        elif i % 100 == angkaBom:
+            print(kataBom, end=" - ")
+        else:
+            print(i, end=" - ")
+        elif i % kolom == 0:
+            if i % angkaBom == 0 or i // 10 == angkaBom or i % 10 == angkaBom:
+                print(kataBom, end=" ")
+            elif i % 100 == angkaBom:
+                print(kataBom, end=" ")
+            else:
+                print(i, end=" ")
+        else:
+            if i % angkaBom == 0 or i // 10 == angkaBom or i % 10 == angkaBom:
+                print(kataBom, end=" - ")
+            elif i % 100 == angkaBom:
+                print(kataBom, end=" - ")
+            else:
+                print(i, end=" - ")
+=====================================================================================
+def piramidKiri(tinggi):
+    # Memastikan input valid
+    if tinggi <= 0:
+        print("Input harus berupa bilangan bulat positif dan lebih besar dari 0")
+        return
+    
+    for i in range(1, tinggi + 1):
+        # Mencetak bintang sebanyak i
+        print('*' * i)
+
+# Contoh penggunaan
+piramidKiri(5)
+
+=======================================================================================
+def piramidKanan(tinggi):
+    # Memastikan input valid
+    if tinggi <= 0:
+        print("Input harus berupa bilangan bulat positif dan lebih besar dari 0")
+        return
+    
+    for i in range(1, tinggi + 1):
+        # Mencetak spasi untuk perataan kanan
+        print(' ' * (tinggi - i) + '*' * i)
+
+# Contoh penggunaan
+piramidKanan(5)
+========================================================================================
+
+def piramidTengah(tinggi):
+    # Memastikan input valid
+    if tinggi <= 0:
+        print("Input harus berupa bilangan bulat positif dan lebih besar dari 0")
+        return
+    
+    for i in range(1, tinggi + 1):
+        # Mencetak spasi untuk perataan tengah
+        print(' ' * (tinggi - i) + '*' * (2 * i - 1))
+
+# Contoh penggunaan
+piramidTengah(5)
