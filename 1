@@ -131,3 +131,76 @@ def piramidTengah(tinggi):
 
 # Contoh penggunaan
 piramidTengah(5)
+
+=================================================================================
+def simulasi_menginap(saldo, biaya_per_malam_awal):
+    malam = 0
+    kelelahan = 0  # Menghitung hari berturut-turut bekerja
+    biaya_per_malam = biaya_per_malam_awal
+    
+    while saldo >= 0:
+        malam += 1
+        print(f"Malam ke-{malam}:")
+        print(f"Saldo sebelum bayar: {saldo}")
+        print(f"Harga penginapan malam itu: {biaya_per_malam}")
+        
+        if saldo < biaya_per_malam:
+            jam_kerja = min(3, (biaya_per_malam - saldo + 2) // 3)  # Hitung jam kerja yang dibutuhkan
+            saldo += jam_kerja * 3
+            kelelahan += 1
+            print(f"Saldo kurang, bekerja selama {jam_kerja} jam")
+            print(f"Saldo setelah bekerja: {saldo}")
+            
+            if saldo < biaya_per_malam:
+                print("Saldo masih kurang, X harus pulang.")
+                break
+            
+            if kelelahan >= 2:
+                print("X kelelahan karena bekerja 2 hari berturut-turut, harus pulang.")
+                break
+        else:
+            kelelahan = 0  # Reset kelelahan jika tidak bekerja
+        
+        saldo -= biaya_per_malam
+        print(f"Sisa saldo setelah membayar: {saldo}\n")
+        
+        if malam % 3 == 0:
+            biaya_per_malam = biaya_per_malam_awal  # Reset harga penginapan setiap 3 malam
+        else:
+            biaya_per_malam = round(biaya_per_malam * 0.95)  # Diskon 5% untuk malam berikutnya
+    
+    print(f"X berhasil bertahan selama {malam - 1} malam.")
+
+# Contoh penggunaan
+simulasi_menginap(50, 20)
+=============================================================================================
+def ularAngka(bawah, samping):
+    if bawah <= 0 or samping <= 0:
+        print("Input harus bilangan bulat positif lebih dari 0.")
+        return
+    
+    angka = 1  # Mulai dari angka 1
+    for i in range(bawah):
+        if i % 2 == 0:  # Baris genap (dari kiri ke kanan)
+            for j in range(samping):
+                if angka == 1:
+                    print(f"head {angka:02d}", end="  ")
+                elif i == bawah - 1 and j == samping - 1:
+                    print(f"tail {angka:02d}", end="  ")
+                else:
+                    print(f"{angka:02d}", end="  ")
+                angka += 1
+        else:  # Baris ganjil (dari kanan ke kiri)
+            start = angka + samping - 1
+            for j in range(samping):
+                if i == bawah - 1 and j == 0:
+                    print(f"tail {start:02d}", end="  ")
+                else:
+                    print(f"{start:02d}", end="  ")
+                start -= 1
+            angka += samping
+        print()  # Pindah ke baris berikutnya
+
+# Contoh penggunaan:
+ularAngka(4, 5)
+
